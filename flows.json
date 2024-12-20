@@ -1,0 +1,460 @@
+[
+    {
+        "id": "d5d5643f9101182e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2c8dc92769810425",
+        "type": "mqtt in",
+        "z": "d5d5643f9101182e",
+        "name": "",
+        "topic": "sensors/bme280/temp",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "8dd03c45619b6a91",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "e1238877ad5bc8a6",
+                "7f58f185442a9402"
+            ]
+        ]
+    },
+    {
+        "id": "e1238877ad5bc8a6",
+        "type": "function",
+        "z": "d5d5643f9101182e",
+        "name": "function 1",
+        "func": "msg.topic = \"sensors/bme280/temp\";\nmsg.payload = parseFloat(msg.payload);  // Extract numeric value from the string\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "5360cf6caf0e1ed2",
+                "5931733ba9f4ec09"
+            ]
+        ]
+    },
+    {
+        "id": "5360cf6caf0e1ed2",
+        "type": "influxdb out",
+        "z": "d5d5643f9101182e",
+        "influxdb": "9506c826943b8428",
+        "name": "OuluDB",
+        "measurement": "Temp-Data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Oulu",
+        "bucket": "IoT",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5931733ba9f4ec09",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "364c08a9407e017b",
+        "type": "mqtt in",
+        "z": "d5d5643f9101182e",
+        "name": "",
+        "topic": "sensors/bme280/pressure",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "8dd03c45619b6a91",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "817fc215b4217bc1",
+                "ca3c40015921c231"
+            ]
+        ]
+    },
+    {
+        "id": "817fc215b4217bc1",
+        "type": "function",
+        "z": "d5d5643f9101182e",
+        "name": "function 2",
+        "func": "msg.topic = \"sensors/bme280/pressure\";\nmsg.payload = parseFloat(msg.payload);  // Extract numeric value from the string\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "a0f99ba7a5531e10",
+                "d258235c77c3d313"
+            ]
+        ]
+    },
+    {
+        "id": "a0f99ba7a5531e10",
+        "type": "influxdb out",
+        "z": "d5d5643f9101182e",
+        "influxdb": "9506c826943b8428",
+        "name": "OuluDB",
+        "measurement": "Pressure-Data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Oulu",
+        "bucket": "IoT",
+        "x": 660,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d258235c77c3d313",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "032a5331d89ef530",
+        "type": "mqtt in",
+        "z": "d5d5643f9101182e",
+        "name": "",
+        "topic": "sensors/bme280/humidity",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "8dd03c45619b6a91",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "f453e127796741f3",
+                "148601a2f9072834"
+            ]
+        ]
+    },
+    {
+        "id": "f453e127796741f3",
+        "type": "function",
+        "z": "d5d5643f9101182e",
+        "name": "function 3",
+        "func": "msg.topic = \"sensors/bme280/humidity\";\nmsg.payload = parseFloat(msg.payload);  // Extract numeric value from the string\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "d0f85172639cff38",
+                "3b74abb19762a68b"
+            ]
+        ]
+    },
+    {
+        "id": "d0f85172639cff38",
+        "type": "influxdb out",
+        "z": "d5d5643f9101182e",
+        "influxdb": "9506c826943b8428",
+        "name": "OuluDB",
+        "measurement": "Humidity-Data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Oulu",
+        "bucket": "IoT",
+        "x": 660,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3b74abb19762a68b",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7f58f185442a9402",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ca3c40015921c231",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "148601a2f9072834",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "09ca175fcd41f2b8",
+        "type": "inject",
+        "z": "d5d5643f9101182e",
+        "name": "fetch",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "82bafdbcac9fb81a"
+            ]
+        ]
+    },
+    {
+        "id": "82bafdbcac9fb81a",
+        "type": "influxdb in",
+        "z": "d5d5643f9101182e",
+        "influxdb": "9506c826943b8428",
+        "name": "Data in",
+        "query": "from(bucket: \"IoT\")\n|> range(start: -1h) // Get data from the last 1 hour\n|> filter(fn: (r) => r[\"_measurement\"] == \"Temp-Data\")\n|> filter(fn: (r) => r[\"_field\"] == \"value\")\n|> last()",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "University of Oulu",
+        "x": 320,
+        "y": 580,
+        "wires": [
+            [
+                "7125a02ba92b521a",
+                "089e84373456c7dc"
+            ]
+        ]
+    },
+    {
+        "id": "7125a02ba92b521a",
+        "type": "function",
+        "z": "d5d5643f9101182e",
+        "name": "function 4",
+        "func": "// Extract the first object from the payload\nlet temperatureData = msg.payload[0];\n// Ensure the temperature value is available and is a number\nif (temperatureData && typeof temperatureData._value === 'number') {\n    let temperature = temperatureData._value;\n    // If the temperature is above 22°C, send \"ON\", else send \"OFF\"\n    msg.payload = (temperature > 22) ? \"ON\" : \"OFF\";\n} else {\n    msg.payload = \"Error: No valid temperature data found\"; // Handle missing or invalid temperature data\n}\n// Return the modified message\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 580,
+        "wires": [
+            [
+                "8246ae01be61be65",
+                "34a20bafed8d5216"
+            ]
+        ]
+    },
+    {
+        "id": "8246ae01be61be65",
+        "type": "mqtt out",
+        "z": "d5d5643f9101182e",
+        "name": "Control",
+        "topic": "picow/control",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8dd03c45619b6a91",
+        "x": 700,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "089e84373456c7dc",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "34a20bafed8d5216",
+        "type": "debug",
+        "z": "d5d5643f9101182e",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "8dd03c45619b6a91",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "d227fdb4a0bf4d4dbe239e1a7d4bb1c5.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9506c826943b8428",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Oulu",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    }
+]
